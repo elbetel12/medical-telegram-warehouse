@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_telegram_messages
+    description: "Cleaned and standardized Telegram messages from raw data"
+    columns:
+      - name: message_id
+        description: "Unique identifier for each message"
+        tests:
+          - unique
+          - not_null
+      
+      - name: channel_name
+        description: "Name of the Telegram channel"
+        tests:
+          - not_null
+      
+      - name: message_date
+        description: "Timestamp when the message was posted"
+        tests:
+          - not_null
+      
+      - name: message_text
+        description: "Text content of the message"
+      
+      - name: message_length
+        description: "Length of the message text"
+        tests:
+          - not_null
+      
+      - name: views
+        description: "Number of views on the message"
+        tests:
+          - not_null
+      
+      - name: forwards
+        description: "Number of times the message was forwarded"
+        tests:
+          - not_null
+      
+      - name: has_media
+        description: "Whether the message contains media"
+        tests:
+          - not_null
+      
+      - name: image_path
+        description: "Path to the downloaded image (if applicable)"
+      
+      - name: scraped_at
+        description: "Timestamp when the data was scraped"
+        tests:
+          - not_null
