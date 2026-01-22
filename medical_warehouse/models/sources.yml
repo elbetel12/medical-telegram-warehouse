@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: external
+    schema: external
+    tables:
+      - name: yolo_detections
+        description: "YOLO object detection results from Telegram images"
+        loaded_at_field: processing_timestamp
+        columns:
+          - name: image_path
+            description: "Path to the image file"
+          - name: channel_name
+            description: "Name of the Telegram channel"
+          - name: filename
+            description: "Name of the image file"
+          - name: detection_count
+            description: "Number of objects detected in the image"
+          - name: detected_objects
+            description: "Comma-separated list of detected objects"
+          - name: medical_objects
+            description: "Comma-separated list of medical-related objects"
+          - name: image_category
+            description: "Category of the image (promotional, product_display, lifestyle, other)"
+          - name: classification_confidence
+            description: "Confidence score for the classification"
+          - name: classification_reason
+            description: "Reason for the classification"
+          - name: processing_timestamp
+            description: "Timestamp when the detection was processed"

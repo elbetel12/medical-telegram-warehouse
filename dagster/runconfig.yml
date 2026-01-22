@@ -1,0 +1,28 @@
+# Run configuration for the pipeline
+resources:
+  postgres:
+    config:
+      host: "localhost"
+      port: 5432
+      database: "telegram_warehouse"
+      user: "postgres"
+      password: "postgres123"
+  file_system:
+    config:
+      data_dir: "data"
+      logs_dir: "logs"
+
+loggers:
+  console:
+    config:
+      log_level: "INFO"
+
+ops:
+  scrape_telegram_data:
+    config:
+      days_back: 7
+      limit_per_channel: 500
+  run_yolo_enrichment:
+    config:
+      model_size: "nano"
+      max_images: 50

@@ -1,0 +1,33 @@
+# Dagster instance configuration
+compute_logs:
+  module: dagster.core.storage.local_compute_log_manager
+  class: LocalComputeLogManager
+  config:
+    base_dir: /tmp/dagster/compute_logs
+
+run_storage:
+  module: dagster.core.storage.runs
+  class: SqliteRunStorage
+  config:
+    base_dir: /tmp/dagster/runs
+
+schedule_storage:
+  module: dagster.core.storage.schedules
+  class: SqliteScheduleStorage
+  config:
+    base_dir: /tmp/dagster/schedules
+
+scheduler:
+  module: dagster.core.scheduler
+  class: DagsterDaemonScheduler
+
+run_launcher:
+  module: dagster.core.launcher.sync_in_memory_run_launcher
+  class: SyncInMemoryRunLauncher
+
+run_coordinator:
+  module: dagster.core.run_coordinator
+  class: DefaultRunCoordinator
+
+telemetry:
+  enabled: false
