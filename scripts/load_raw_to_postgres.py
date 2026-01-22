@@ -211,7 +211,7 @@ def main():
         logger.success("Data loading completed successfully")
         
     except Exception as e:
-        logger.error(f"Data loading failed: {str(e)}")
+        logger.error(f"Datac   loading failed: {str(e)}")
         
     finally:
         loader.disconnect()

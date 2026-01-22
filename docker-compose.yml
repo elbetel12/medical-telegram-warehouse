@@ -1,11 +1,12 @@
-# docker-compose.yml
+version: '3.8'
+
 services:
   postgres:
     image: postgres:15
     environment:
       POSTGRES_DB: telegram_warehouse
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: postgres123  # Changed password
     ports:
       - "5432:5432"
     volumes:
@@ -15,25 +16,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-
-  dbt-docs:
-    image: ghcr.io/dbt-labs/dbt-docs:latest
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./medical_warehouse/target:/usr/share/nginx/html
-
-  dagster:
-    build: .
-    ports:
-      - "3000:3000"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    volumes:
-      - .:/app
-    environment:
-      - POSTGRES_HOST=postgres
 
 volumes:
   postgres_data:
